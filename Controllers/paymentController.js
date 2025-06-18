@@ -3,8 +3,8 @@ const orderSchema = require('../models/orderModel');
 const Cart = require('../models/cart');
 
 const razorpay = new Razorpay({
-  key_id: 'rzp_test_q58snxSC17DiYZ',
-  key_secret: 'dgvw3h33iaDDFgnXpx4idUqO'
+  key_id: 'process.env.RAZORPAY_KEY_ID',
+  key_secret: 'process.env.RAZORPAY_KEY_SECRET'
 });
 
 const createOrder = async (req, res) => {

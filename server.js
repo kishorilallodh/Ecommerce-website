@@ -11,6 +11,7 @@ const checkout = require('./routes/paymentRoute')
 const myOrderRoutes = require('./routes/myOrderRoute')
 const userPanelRoutes = require('./routes/userPanelRoute')
 const adminPanelRoutes = require('./routes/adminPanelRoute')
+require('dotenv').config()
 
 const app = express()
 const port = 3000
