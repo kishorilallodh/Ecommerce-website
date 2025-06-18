@@ -22,7 +22,7 @@ const { category, price } = req.query;
       }
     }
 
-    const products = await Product.find(filter);
+    const products = await Product.find();
   res.render("asset/index",{user , products});
  }catch (error) {
     console.error("Error loading home page:", error);
