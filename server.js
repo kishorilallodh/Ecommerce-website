@@ -25,7 +25,7 @@ app.use(express.json());
 
 
 //mongodb connection
-mongoose.connect('mongodb+srv://kishorilallodh2:FOYn1zvnAlIzsUuX@cluster0.1298rmq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://kishorilallodh2:FOYn1zvnAlIzsUuX@cluster0.1298rmq.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0')
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.error(err))
 
