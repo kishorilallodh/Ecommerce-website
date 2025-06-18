@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product List</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+   <style>
+  /* Pagination Container */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    gap: 10px;
+  }
+
+  /* Pagination Links */
+  .pagination a, 
+  .pagination span {
+    display: inline-block;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* Normal Page Links */
+  .pagination a {
+    color: #333;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+  }
+
+  /* Current Active Page */
+  .pagination span {
+    color: white;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+  }
+
+  /* Hover Effect */
+  .pagination a:hover {
+    background-color: #e9ecef;
+  }
+
+  /* Previous/Next Buttons */
+  .pagination a.prev-next {
+    min-width: 80px;
+    text-align: center;
+  }
+
+  .pagination a.prev-next:hover{
+     background-color: #007bff;
+     color: white;
+  }
+
+  /* Disabled Links */
+  .pagination a.disabled {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+  }
+</style>
+  </head>
+  <body>
+    <%- include('../includes/navbar.ejs') %>
+
+   <div class="product-container">
+  <% products.forEach(product => { %>
+    <a href="/product/<%= product._id %>" class="product-card-link">
+      <div class="add-product-card">
+        <div class="product-image">
+          <img src="/<%= product.pimage %>" alt="<%= product.pname %>" />
+        </div>
+        <div class="add-product-info">
+          <h4 class="product-name"><%= product.pname %></h4>
+          <div class="price-row">
+            <p class="add-product-price">₹ <%= product.pprice %></p>
+            <p class="product-discount"><%= product.pdisct %>% OFF</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  <% }) %>
+</div>
+<div class="pagination">
+  <% if (totalPages > 1) { %>
+    <% if (currentPage > 1) { %>
+      <a href="/showproduct/?page=<%= currentPage-1 %>" class="prev-next">Previous</a>
+    <% } else { %>
+      <a href="#" class="prev-next disabled">Previous</a>
+    <% } %>
+
+    <% for (let i = 1; i <= totalPages; i++) { %>
+      <% if (i === currentPage) { %>
+        <span><%= i %></span>
+      <% } else { %>
+        <a href="/showproduct/?page=<%= i %>"><%= i %></a>
+      <% } %>
+    <% } %>
+
+    <% if (currentPage < totalPages) { %>
+      <a href="/showproduct/?page=<%= currentPage+1 %>" class="prev-next">Next</a>
+    <% } else { %>
+      <a href="#" class="prev-next disabled">Next</a>
+    <% } %>
+  <% } %>
+</div>
+
+
+    <%- include('../includes/footer.ejs') %>
+  </body>
+</html>

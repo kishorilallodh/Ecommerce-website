@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Orders</title>
+     <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+     *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+     }
+     
+      html,body{
+         width: 100%;
+         height: 100%;
+     }
+      .container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .order-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+        background-color: #fafafa;
+      }
+
+      .order-info p {
+        margin: 5px 0;
+        color: #555;
+      }
+
+      .products {
+        margin-top: 15px;
+      }
+
+      .product-item {
+        display: flex;
+        gap: 20px;
+        border-top: 1px solid #e0e0e0;
+        padding-top: 15px;
+        margin-top: 15px;
+        align-items: center;
+      }
+
+      .product-item img {
+        width: 100px;
+        height: auto;
+        border-radius: 5px;
+        object-fit: contain;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #ccc;
+      }
+
+      .product-details {
+        flex-grow: 1;
+      }
+
+      .product-details p {
+        margin: 4px 0;
+        font-size: 14px;
+        color: #444;
+      }
+
+      .status {
+        padding: 4px 10px;
+        background-color: #c8e6c9;
+        color: #256029;
+        display: inline-block;
+        border-radius: 5px;
+        font-size: 13px;
+      }
+
+      .total-amount {
+        text-align: right;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dashed #ccc;
+        font-weight: 600;
+        font-size: 16px;
+        color: #111;
+      }
+
+      @media (max-width: 600px) {
+        .product-item {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .product-item img {
+          width: 80px;
+        }
+
+        .total-amount {
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('../includes/navbar.ejs') %>
+    <div class="container">
+      <h2>🧾 My Orders</h2>
+
+      <% if (orders.length === 0) { %>
+        <p>No orders found.</p>
+      <% } else { %>
+        <% orders.forEach(order => { %>
+          <div class="order-card">
+            <div class="order-info">
+              <p><strong>Order ID:</strong> <%= order.orderId %></p>
+              <p><strong>Payment ID:</strong> <%= order.paymentId %></p>
+              <p>
+                <strong>Date:</strong>
+                <%= new Date(order.created).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) %>
+              </p>
+              <p>
+                <strong>Status:</strong>
+                <span class="status"><%= order.status %></span>
+              </p>
+            </div>
+
+            <div class="products">
+              <% order.product.forEach(item => { %> 
+                <div class="product-item">
+                  <img src="/<%= item.productId.pimage %>" alt="product image" />
+                  <div class="product-details">
+                    <p><strong><%= item.productId.pname %></strong></p>
+                    <p>Brand: <%= item.productId.pbname %></p>
+                    <p>Quantity: <%= item.quantity %></p>
+                    <p>Price: ₹<%= item.productId.pprice %></p>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+            <div class="total-amount">
+              <p><strong>Total Amount:</strong> ₹<%= order.amount %></p>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+    <%- include('../includes/footer.ejs') %>
+  </body>
+</html>

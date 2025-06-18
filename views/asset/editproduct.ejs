@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Product</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .page-wrapper {
+      background-color: #f4f6f9;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 750px;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 26px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .flex-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .flex-row > div {
+      flex: 1;
+      min-width: 48%;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      width: 100%;
+      background-color: #fafafa;
+      transition: border 0.3s;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #4CAF50;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #43a047;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="form-container">
+      <h2>Edit Product</h2>
+      <form action="/editproduct/<%= product._id %>" method="POST" enctype="multipart/form-data">
+        
+        <div class="flex-row">
+          <div>
+            <label for="pname">Product Name</label>
+            <input type="text" id="pname" name="pname" value="<%= product.pname %>" placeholder="Enter Product Name" required />
+          </div>
+          <div>
+            <label for="pbname">Brand Name</label>
+            <input type="text" id="pbname" name="pbname" value="<%= product.pbname %>" placeholder="Enter Brand Name" required />
+          </div>
+        </div>
+
+        <div class="flex-row">
+          <div>
+            <label for="pdisct">Discount %</label>
+            <input type="text" id="pdisct" name="pdisct" value="<%= product.pdisct %>" placeholder="Enter Discount %" required />
+          </div>
+          <div>
+            <label for="pprice">Price</label>
+            <input type="number" id="pprice" name="pprice" value="<%= product.pprice %>" placeholder="Enter Price" required />
+          </div>
+        </div>
+
+        <div class="flex-row">
+          <div>
+            <label for="pcategory">Product Category</label>
+            <input type="text" id="pcategory" name="pcategory" value="<%= product.pcategory %>" placeholder="Enter Category" required />
+          </div>
+          <div>
+            <label for="pimage">Upload Image</label>
+            <input type="file" id="pimage" name="pimage" />
+          </div>
+        </div>
+
+        <div>
+          <label for="pdesc">Product Description</label>
+          <textarea id="pdesc" name="pdesc" placeholder="Enter Description" required><%= product.pdesc %></textarea>
+        </div>
+
+        <button type="submit">Update Product</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

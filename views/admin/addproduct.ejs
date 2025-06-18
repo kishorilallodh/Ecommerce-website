@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Form</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4..." crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    .body-div {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .back-cantainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 15px;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .form-heading {
+      font-size: 26px;
+      font-weight: 600;
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .form-input,
+    .form-textarea {
+      padding: 10px 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      background-color: #fff;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .sbt-btn {
+      grid-column: 1 / -1;
+      padding: 14px;
+      background-color: #ff3f6c;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .sbt-btn:hover {
+      background-color: #e5355f;
+    }
+  </style>
+</head>
+<body>
+  <%- include('../includes/navbar.ejs') %>
+
+  <div class="body-div">
+    <main>
+      <div class="back-cantainer">
+        <div class="form-container">
+          <h2 class="form-heading">Product Details</h2>
+          <form action="/submitproduct" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <label class="form-label" for="pname">Product Name</label>
+              <input type="text" name="pname" id="pname" class="form-input" placeholder="Enter Product Name" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pprice">Product Price</label>
+              <input type="number" name="pprice" id="pprice" class="form-input" placeholder="Enter Product Price" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pbname">Product Brand Name</label>
+              <input type="text" name="pbname" id="pbname" class="form-input" placeholder="Enter Brand Name" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pdisct">Product Discount (%)</label>
+              <input type="number" name="pdisct" id="pdisct" class="form-input" placeholder="Enter Discount %" required />
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="pdesc">Product Description</label>
+              <textarea name="pdesc" id="pdesc" class="form-textarea" placeholder="Enter Product Description" required></textarea>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="pimage">Product Images</label>
+              <input type="file" name="pimage" id="pimage" class="form-input" multiple required />
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="pcategory">Category</label>
+              <input type="text" name="pcategory" id="pcategory" class="form-input" placeholder="Enter Product Category" required />
+            </div>
+
+            <button type="submit" class="sbt-btn">Submit Product</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <%- include('../includes/footer.ejs') %>
+</body>
+</html>

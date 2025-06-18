@@ -1,0 +1,23 @@
+<header>
+  <div class="logo" ><a href="/"><i class="fa-solid fa-gift"></i><span>Fnp</span></a></div>
+  <nav aria-label="Primary Navigation">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/showProduct">Products</a></li>
+      <li><a href="#">Men</a></li>
+      <li><a href="/myOrder">My Order</a></li>
+      <li><a href="/cart">My Cart</a></li>
+    </ul>
+  </nav>
+ <div>
+   <% if(user){ %>
+   <div class="navbar-login-user">
+     <a href="/userPanel"><span><i class="fa-solid fa-user"></i> Welcome, <%= user.name %></span></a>
+     <a href="/login/logout"><button class="navbar-login-btn">logout</button></a>
+   </div>
+   <% } else { %>
+     <a href="/login"><button class="navbar-login-btn">Login</button></a>
+    <% } %>
+ 
+ </div>
+</header>
