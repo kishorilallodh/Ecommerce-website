@@ -43,7 +43,6 @@ const updateProduct = async (req, res) => {
   try {
     const { pname, pprice, pdisct, pbname, pdesc, pcategory } = req.body;
 
-    // Base update data
     const updatedData = {
       pname,
       pprice,
@@ -75,7 +74,7 @@ const updateProduct = async (req, res) => {
         });
       }
     } else {
-      // 🔁 No new images, keep existing images
+      
       updatedData.pimage = oldProduct.pimage;
     }
 
