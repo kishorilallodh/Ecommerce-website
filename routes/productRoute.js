@@ -18,7 +18,7 @@ const upload = multer({ storage: storage });
 // Routes
 
 router.get("/addproduct",authMiddleware, productController.getAddProductPage);
-router.post('/submitproduct', upload.single('pimage'), productController.submitProduct)
+router.post('/submitproduct', upload.array('pimage'), productController.submitProduct)
 router.get("/showproduct",authMiddleware, productController.showAllProducts);
 
 router.get('/editproduct/:id',authMiddleware,productController.getEditProductPage);

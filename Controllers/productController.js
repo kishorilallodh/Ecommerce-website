@@ -66,7 +66,7 @@ const updateProduct = async (req, res) => {
 
 const submitProduct = async (req, res) => {
   const { pname, pprice, pdisct, pbname, pdesc,pcategory, } = req.body;
-  const pimage = "productimage/" + req.file.filename;
+  const pimage = req.files.map(file=> `productimage/${file.filename}`);
   
   const data = new Product({
     pname,

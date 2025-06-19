@@ -9,8 +9,6 @@ const razorpay = new Razorpay({
 
 const createOrder = async (req, res) => {
   try {
-    
-
     const { totalAmount } = req.body;
     const options = {
       amount: Math.round(totalAmount * 100), // amount in smallest currency unit
