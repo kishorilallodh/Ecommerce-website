@@ -25,7 +25,7 @@ const showAllProducts = async (req, res) => {
       const totalProducts = await Product.countDocuments({});
       const products = await Product.find().skip(skip).limit(limit);
 
-  res.render("asset/showproduct",
+  res.render("asset/showProduct",
      {user,
       products,
       currentPage: page,
@@ -58,7 +58,7 @@ const updateProduct = async (req, res) => {
     }
 
     await Product.findByIdAndUpdate(req.params.id, updatedData);
-    res.redirect("/showproduct"); 
+    res.redirect("/showProduct"); 
   } catch (err) {
     res.status(500).send("Failed to update product");
   }
@@ -97,7 +97,7 @@ const deleteProduct = async (req, res) => {
       }
     });
   const deletedProduct = await Product.findByIdAndDelete(req.params.id);
-  res.redirect("/showproduct");
+  res.redirect("/showProduct");
 };
 
 const getSingleProduct = async (req, res) => {
