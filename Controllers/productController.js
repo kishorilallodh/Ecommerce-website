@@ -18,7 +18,7 @@ const showAllProducts = async (req, res) => {
    user = await userauth(token);
   
  
-   const page = parseInt(req.query.page) || 1;
+      const page = parseInt(req.query.page) || 1;
       const limit = parseInt(req.query.limit) || 8;
       const skip = (page - 1) * limit;
       
@@ -41,28 +41,51 @@ const getEditProductPage = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   try {
-    const { pname, pprice, pdisct, pbname, pdesc, pimage, pcategory } = req.body;
+    const { pname, pprice, pdisct, pbname, pdesc, pcategory } = req.body;
+
+    // Base update data
     const updatedData = {
       pname,
       pprice,
       pdisct,
       pbname,
       pdesc,
-      pimage,
       pcategory,
     };
 
-    if (req.files && req.files.length > 0) {
-      updatedData.pimage = req.files.map(file => `productimage/${file.filename}`);
+    const productId = req.params.id;
+    const oldProduct = await Product.findById(productId);
+
+    if (!oldProduct) {
+      return res.status(404).send("Product not found");
     }
 
-    await Product.findByIdAndUpdate(req.params.id, updatedData);
-    res.redirect("/showProduct"); 
+    // ✅ If new images are uploaded
+    if (req.files && req.files.length > 0) {
+      const newImages = req.files.map(file => `productimage/${file.filename}`);
+      updatedData.pimage = newImages;
+
+      // 🗑️ Delete old images
+      if (oldProduct.pimage && oldProduct.pimage.length > 0) {
+        oldProduct.pimage.forEach(img => {
+          const imagePath = path.join(__dirname, "../public/", img);
+          fs.unlink(imagePath, err => {
+            if (err) console.error("Failed to delete old image:", err);
+          });
+        });
+      }
+    } else {
+      // 🔁 No new images, keep existing images
+      updatedData.pimage = oldProduct.pimage;
+    }
+
+    await Product.findByIdAndUpdate(productId, updatedData);
+    res.redirect("/showProduct");
   } catch (err) {
+    console.error(err);
     res.status(500).send("Failed to update product");
   }
 };
-
 const submitProduct = async (req, res) => {
   const { pname, pprice, pdisct, pbname, pdesc,pcategory, } = req.body;
   const pimage = req.files.map(file=> `productimage/${file.filename}`);
