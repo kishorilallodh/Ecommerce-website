@@ -22,7 +22,7 @@ router.post('/submitproduct', upload.array('pimage'), productController.submitPr
 router.get("/showproduct",authMiddleware, productController.showAllProducts);
 
 router.get('/editproduct/:id',authMiddleware,productController.getEditProductPage);
-router.post('/editproduct/:id', upload.single('pimage'), productController.updateProduct);
+router.post('/editproduct/:id', upload.array('pimage'), productController.updateProduct);
 
 router.get('/deleteproduct/:id', productController.deleteProduct);
 

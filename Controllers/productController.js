@@ -52,8 +52,8 @@ const updateProduct = async (req, res) => {
       pcategory,
     };
 
-    if (req.files) {
-       updatedData.pimage = req.files.map(file=> `productimage/${file.filename}`);
+    if (req.files && req.files.length > 0) {
+      updatedData.pimage = req.files.map(file => `productimage/${file.filename}`);
     }
 
     await Product.findByIdAndUpdate(req.params.id, updatedData);
