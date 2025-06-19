@@ -52,39 +52,19 @@ const updateProduct = async (req, res) => {
       pcategory,
     };
 
-    const productId = req.params.id;
-    const oldProduct = await Product.findById(productId);
-
-    if (!oldProduct) {
-      return res.status(404).send("Product not found");
-    }
-
-    // ✅ If new images are uploaded
+    // Check if new images are uploaded
     if (req.files && req.files.length > 0) {
-      const newImages = req.files.map(file => `productimage/${file.filename}`);
-      updatedData.pimage = newImages;
-
-      // 🗑️ Delete old images
-      if (oldProduct.pimage && oldProduct.pimage.length > 0) {
-        oldProduct.pimage.forEach(img => {
-          const imagePath = path.join(__dirname, "../public/", img);
-          fs.unlink(imagePath, err => {
-            if (err) console.error("Failed to delete old image:", err);
-          });
-        });
-      }
-    } else {
-      
-      updatedData.pimage = oldProduct.pimage;
+      updatedData.pimage = req.files.map(file => "productimage/" + file.filename);
     }
 
-    await Product.findByIdAndUpdate(productId, updatedData);
+    await Product.findByIdAndUpdate(req.params.id, updatedData);
     res.redirect("/showProduct");
   } catch (err) {
     console.error(err);
     res.status(500).send("Failed to update product");
   }
 };
+
 const submitProduct = async (req, res) => {
   const { pname, pprice, pdisct, pbname, pdesc,pcategory, } = req.body;
   const pimage = req.files.map(file=> `productimage/${file.filename}`);
