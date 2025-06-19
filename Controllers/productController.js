@@ -36,7 +36,7 @@ const showAllProducts = async (req, res) => {
 
 const getEditProductPage = async (req, res) => {
   const product = await Product.findById(req.params.id);
-  res.render("asset/editproduct", { product }); // create this EJS file
+  res.render("asset/editproduct", { product }); 
 };
 
 const updateProduct = async (req, res) => {
@@ -54,11 +54,11 @@ const updateProduct = async (req, res) => {
 
     if (req.file) {
        updatedData.pimage = "productimage/" + req.file.filename;
-      // updatedData.pimage = "productimage/" + req.file.originalname;
+
     }
 
     await Product.findByIdAndUpdate(req.params.id, updatedData);
-    res.redirect("/showproduct"); // or wherever your product list is
+    res.redirect("/showproduct"); 
   } catch (err) {
     res.status(500).send("Failed to update product");
   }
@@ -67,8 +67,7 @@ const updateProduct = async (req, res) => {
 const submitProduct = async (req, res) => {
   const { pname, pprice, pdisct, pbname, pdesc,pcategory, } = req.body;
   const pimage = "productimage/" + req.file.filename;
-  // const pimage = "productimage/" + req.file.originalname;
-  // const pimage = req.files.map(file => 'productimage/' + file.originalname)
+  
   const data = new Product({
     pname,
     pprice,
@@ -103,7 +102,7 @@ const deleteProduct = async (req, res) => {
 
 const getSingleProduct = async (req, res) => {
   const product = await Product.findById(req.params.id);
-  // console.log(product);
+ 
    let user = null; 
    const token = req.cookies.token;
    user = await userauth(token);

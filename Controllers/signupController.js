@@ -6,7 +6,6 @@ const jwt_secret = "yourkey"
 
 exports.signupUser = async (req, res) => {
     const { name, email, password, mobile, gender ,type} = req.body;
-    // const p_pic = req.file ? req.file.originalname : null;
 const existUser = await signupModel.findOne({ email });
 if (existUser) {
     return res.send('User already exists');
@@ -25,7 +24,7 @@ const token = jwt.sign({email : email }, jwt_secret)
             type
         });
 
-        await signup1.save(); // Await async operation
+        await signup1.save(); 
         res.cookie("token", token,{
           httpOnly:true, 
           sameSite:"strict",
