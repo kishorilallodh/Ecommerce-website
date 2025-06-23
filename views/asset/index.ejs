@@ -4,241 +4,56 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Fnp - Home</title>
-<link rel="stylesheet" href="/css/style.css">
+
+ <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<style>
-/* Overall Wrapper */
-.f-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding: 40px 60px;
-  background: #f2f2f2;
-}
-
-/* Filter Section */
-.f-filter {
-  flex: 1 1 250px;
-  max-width: 300px;
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  align-self: flex-start; /* Add this line */
-}
-
-
-.f-filter h2 {
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-
-.f-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.f-form label {
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.f-form select,
-.f-form button {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-.f-form button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.f-form button:hover {
-  background-color: #0056b3;
-}
-
-/* Product Section */
-.f-products {
-  flex: 3;
-  min-width: 300px;
-}
-
-.f-products h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.f-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-.f-card {
-  background-color: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.f-card:hover {
-  transform: translateY(-5px);
-}
-
-.f-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
-.f-info {
-  padding: 15px;
-}
-
-.f-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-
-.f-brand {
-  font-size: 13px;
-  color: #666;
-  margin-bottom: 10px;
-}
-
-.f-price {
-  color: #e60023;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.f-rating {
-  color: #f39c12;
-  font-size: 16px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .f-wrapper {
-    flex-direction: column;
-    padding: 20px;
-  }
-
-  .f-filter,
-  .f-products {
-    width: 100%;
-  }
-}
-</style>
 </head>
 <body>
-<%- include('../includes/navbar.ejs') %>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>Spring Collection 2024</h1>
-    <p>Discover vibrant colors & fresh styles to renew your wardrobe for the season.</p>
-    <button class="btn-hero">Shop Now</button>
+   <%- include('../includes/navbar.ejs') %>
+
+<section class="w-full h-[520px] bg-[url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1350&q=80')] bg-cover bg-no-repeat bg-center rounded-b-[60px] flex items-center pl-12 text-white">
+  <div class="max-w-[500px] bg-[rgba(197,183,183,0.596)] p-6 rounded-xl">
+    <h1 class="text-[2.8rem] font-bold leading-[1.1] mb-4">Spring Collection 2024</h1>
+    <p class="text-[1.25rem] mb-7">Discover vibrant colors & fresh styles to renew your wardrobe for the season.</p>
+    <button class="bg-[#ff3f6c] text-white font-bold text-[1.1rem] px-9 py-[0.9rem] rounded-full shadow-[0_6px_12px_rgba(255,63,108,0.5)] transition-colors duration-300 hover:bg-[#e5385e]">
+      Shop Now
+    </button>
   </div>
 </section>
 
-<section class="categories" >
-  <div class="category-card">
-    <img src="https://media.istockphoto.com/id/496655448/photo/concept-for-stylish-young-man-outdoors.jpg?s=612x612&w=0&k=20&c=uRV_xyM9UAS9q972ZyAx28ZLQnpqhKpmGAEqwWiJ1JE=" alt="Men category" />
-    <h3>Men</h3>
+
+<section class="max-w-[1100px] mx-auto my-12 px-4 flex justify-between gap-6">
+  <div class="flex-1 bg-white rounded-2xl text-center shadow-[0_8px_25px_rgba(0,0,0,0.08)] cursor-pointer overflow-hidden transition-transform duration-300 ease-in-out hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.12)]">
+    <img class="w-full h-[180px] object-cover rounded-t-2xl block" src="https://media.istockphoto.com/id/496655448/photo/concept-for-stylish-young-man-outdoors.jpg?s=612x612&w=0&k=20&c=uRV_xyM9UAS9q972ZyAx28ZLQnpqhKpmGAEqwWiJ1JE=" alt="Men category" />
+    <h3 class="my-4 font-bold text-[1.3rem] text-[#333]">Men</h3>
   </div>
-  <div class="category-card">
-    <img src="https://media.istockphoto.com/id/2150933760/photo/portrait-of-young-businesswoman-with-straight-hairstyle-wear-trendy-smart-casual-outfit.jpg?s=612x612&w=0&k=20&c=opxeGinSbN67V-_mTlxmG_wufnN8a9uogvTHeXej_LM=" alt="Women category" />
-    <h3>Women</h3>
+  <div class="flex-1 bg-white rounded-2xl text-center shadow-[0_8px_25px_rgba(0,0,0,0.08)] cursor-pointer overflow-hidden transition-transform duration-300 ease-in-out hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.12)]">
+    <img class="w-full h-[180px] object-cover rounded-t-2xl block" src="https://media.istockphoto.com/id/2150933760/photo/portrait-of-young-businesswoman-with-straight-hairstyle-wear-trendy-smart-casual-outfit.jpg?s=612x612&w=0&k=20&c=opxeGinSbN67V-_mTlxmG_wufnN8a9uogvTHeXej_LM=" alt="Women category" />
+    <h3 class="my-4 font-bold text-[1.3rem] text-[#333]">Women</h3>
   </div>
-  <div class="category-card">
-    <img src="https://media.istockphoto.com/id/1095019776/photo/adorable-girls-sitting-together-on-a-skateboard.jpg?s=612x612&w=0&k=20&c=-mNloQv0oXO63y97KZIBg8Un3KLWObi7I2ULGdvvmb8=" alt="Kids category" />
-    <h3>Kids</h3>
+  <div class="flex-1 bg-white rounded-2xl text-center shadow-[0_8px_25px_rgba(0,0,0,0.08)] cursor-pointer overflow-hidden transition-transform duration-300 ease-in-out hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.12)]">
+    <img class="w-full h-[180px] object-cover rounded-t-2xl block" src="https://media.istockphoto.com/id/1095019776/photo/adorable-girls-sitting-together-on-a-skateboard.jpg?s=612x612&w=0&k=20&c=-mNloQv0oXO63y97KZIBg8Un3KLWObi7I2ULGdvvmb8=" alt="Kids category" />
+    <h3 class="my-4 font-bold text-[1.3rem] text-[#333]">Kids</h3>
   </div>
-  <div class="category-card">
-    <img src="https://media.istockphoto.com/id/618635048/photo/make-up-kit.webp?a=1&b=1&s=612x612&w=0&k=20&c=HF2T_5CxQdpk9eXZ-j0qGwN01CSU3PDOfSrXIIm8XMc=" alt="Sale" />
-    <h3>Beauty</h3>
+  <div class="flex-1 bg-white rounded-2xl text-center shadow-[0_8px_25px_rgba(0,0,0,0.08)] cursor-pointer overflow-hidden transition-transform duration-300 ease-in-out hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.12)]">
+    <img class="w-full h-[180px] object-cover rounded-t-2xl block" src="https://media.istockphoto.com/id/618635048/photo/make-up-kit.webp?a=1&b=1&s=612x612&w=0&k=20&c=HF2T_5CxQdpk9eXZ-j0qGwN01CSU3PDOfSrXIIm8XMc=" alt="Beauty" />
+    <h3 class="my-4 font-bold text-[1.3rem] text-[#333]">Beauty</h3>
   </div>
 </section>
 
- <section class="featured-products-section">
-  <h2>Featured Products</h2>
-  <div class="products-grid">
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=400&q=80" alt="Classic Denim Jacket" />
-      <div class="product-info">
-        <div class="product-title">Classic Denim Jacket</div>
-        <div class="product-brand">Brand: Levi's</div>
-        <div>
-          <span class="product-price">₹3,999</span>
-          <span class="product-old-price">₹4,599</span>
-        </div>
-        <div class="product-rating">★★★★★</div>
-      </div>
-    </div>
 
-    <div class="product-card">
-      <img src="https://media.istockphoto.com/id/2150389576/photo/two-women-in-vintage-summer-dresses-and-straw-hats-stand-by-tropical-vegetation-holding.webp?a=1&b=1&s=612x612&w=0&k=20&c=NstPNgSI9R12lrVfJ2zMUWDKJbXkafMXeaE6ssZyV4E=" alt="Floral Summer Dress" />
-      <div class="product-info">
-        <div class="product-title">Floral Summer Dress</div>
-        <div class="product-brand">Brand: Zara</div>
-        <div>
-          <span class="product-price">₹2,199</span>
-          <span class="product-old-price">₹2,799</span>
-        </div>
-        <div class="product-rating">★★★★☆</div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1626497764746-6dc36546b388?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fFNoaXJ0fGVufDB8MHwwfHx8MA%3D%3D" alt="Boys' Casual Shirt" />
-      <div class="product-info">
-        <div class="product-title">Boys' Casual Shirt</div>
-        <div class="product-brand">Brand: Gap Kids</div>
-        <div>
-          <span class="product-price">₹1,299</span>
-          <span class="product-old-price">₹1,699</span>
-        </div>
-        <div class="product-rating">★★★★☆</div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNob2VzfGVufDB8MHwwfHx8MA%3D%3D" alt="Running Shoes" />
-      <div class="product-info">
-        <div class="product-title">Running Shoes</div>
-        <div class="product-brand">Brand: Nike</div>
-        <div>
-          <span class="product-price">₹4,599</span>
-          <span class="product-old-price">₹5,199</span>
-        </div>
-        <div class="product-rating">★★★★★</div>
-      </div>
-    </div>
-  </div>
-</section>
+ 
 <!-- filter section -->
 
-<section class="f-wrapper">
+<section class="flex flex-wrap gap-[30px] px-[60px] py-[40px] bg-[#f2f2f2]">
   <!-- Filter Section -->
-  <aside class="f-filter">
-    <h2>Filter Products</h2>
-    <form action="/" method="GET" class="f-form">
-      <label for="category">Category:</label>
-      <select name="category" id="category">
+  <aside class="flex-1 max-w-[300px] bg-white rounded-[12px] p-5 shadow-[0_2px_10px_rgba(0,0,0,0.05)] self-start">
+    <h2 class="text-[22px] mb-5">Filter Products</h2>
+    <form action="/" method="GET" class="flex flex-col gap-4">
+      <label for="category" class="font-semibold mb-1">Category:</label>
+      <select name="category" id="category" class="p-2.5 rounded-[8px] border border-[#ccc] text-sm">
         <option value="">All</option>
         <option value="men">Men</option>
         <option value="women">Women</option>
@@ -247,8 +62,8 @@
         <option value="electronics">Electronics</option>
       </select>
 
-      <label for="price">Price:</label>
-      <select name="price" id="price">
+      <label for="price" class="font-semibold mb-1">Price:</label>
+      <select name="price" id="price" class="p-2.5 rounded-[8px] border border-[#ccc] text-sm">
         <option value="">All</option>
         <option value="0-1000">Under ₹1,000</option>
         <option value="1000-3000">₹1,000 - ₹3,000</option>
@@ -256,33 +71,33 @@
         <option value="5000">Above ₹5,000</option>
       </select>
 
-      <button type="submit">Apply Filter</button>
+      <button type="submit" class="p-2.5 rounded-[8px] text-sm font-bold bg-[#007bff] text-white border-none cursor-pointer transition-colors duration-300 hover:bg-[#0056b3]">Apply Filter</button>
     </form>
   </aside>
 
   <!-- Product Section -->
-  <div class="f-products">
-    <h2>Featured Products</h2>
-    <div class="f-grid">
+  <div class="flex-[3] min-w-[300px]">
+    <h2 class="text-[24px] mb-5">Featured Products</h2>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-[20px]">
       <% products.forEach(product => { %>
-          <a href="/product/<%= product._id %>" class="product-card-link">
-        <div class="f-card">
-          <img src="/<%= product.pimage %>" alt="<%= product.title %>">
-          <div class="f-info">
-            <div class="f-title"><%= product.pname %></div>
-            <div class="f-brand">Brand: <%= product.pbname %></div>
-            <div class="f-price">₹<%= product.pprice %></div>
-            <div class="f-rating">★★★★★</div>
+        <a href="/product/<%= product._id %>" class="block">
+          <div class="bg-white rounded-[12px] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-transform duration-300 ease-in-out hover:-translate-y-1.5 flex flex-col">
+            <img src="/<%= product.pimage %>" alt="<%= product.title %>" class="w-full h-[220px] object-cover">
+            <div class="p-[15px]">
+              <div class="text-[16px] font-semibold mb-[5px]"><%= product.pname %></div>
+              <div class="text-[13px] text-[#666] mb-[10px]">Brand: <%= product.pbname %></div>
+              <div class="text-[#e60023] font-bold mb-[10px]">₹<%= product.pprice %></div>
+              <div class="text-[#f39c12] text-[16px]">★★★★★</div>
+            </div>
           </div>
-        </div>
         </a>
       <% }) %>
     </div>
   </div>
-
-  
 </section>
 
-<%- include('../includes/footer.ejs') %>
+
+    <%- include('../includes/footer.ejs') %>
+
 </body>
 </html>

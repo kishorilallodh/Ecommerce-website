@@ -11,7 +11,6 @@ exports.loginUser = async (req, res) => {
 
   if(email == "admin@gmail.com" && password == "admin"){
 
-   
     
     const token1 = jwt.sign({email : "admin@gmail.com" , role : "admin"}, jwt_secret)  //get token from database
     res.cookie("token", token1,{

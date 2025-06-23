@@ -1,23 +1,45 @@
-<header>
-  <div class="logo" ><a href="/"><i class="fa-solid fa-gift"></i><span>Fnp</span></a></div>
-  <nav aria-label="Primary Navigation">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/showProduct">Products</a></li>
-      <li><a href="#">Men</a></li>
-      <li><a href="/myOrder">My Order</a></li>
-      <li><a href="/cart">My Cart</a></li>
+<header class="bg-[#282c34] text-white px-6 py-3 flex justify-between items-center sticky top-0 z-[100]">
+  <!-- Logo -->
+  <div class="font-bold text-3xl tracking-widest">
+    <a href="/" class="flex items-center gap-1">
+      <i class="fa-solid fa-gift text-[#ff3f6c]"></i>
+      <span class="text-white">Fnp</span>
+    </a>
+  </div>
+
+  <!-- Navigation (Hidden on mobile) -->
+  <nav class="hidden md:block">
+    <ul class="flex gap-6 m-0 p-0 list-none">
+      <li><a href="/" class="text-white  hover:text-[#ff3f6c] transition">Home</a></li>
+      <li><a href="/showProduct" class="text-white  hover:text-[#ff3f6c] transition">Products</a></li>
+      <li><a href="#" class="text-white  hover:text-[#ff3f6c] transition">Men</a></li>
+      <li><a href="/myOrder" class="text-white  hover:text-[#ff3f6c] transition">My Order</a></li>
+      <li><a href="/cart" class="text-white  hover:text-[#ff3f6c] transition">My Cart</a></li>
     </ul>
   </nav>
- <div>
-   <% if(user){ %>
-   <div class="navbar-login-user">
-     <a href="/userPanel"><span><i class="fa-solid fa-user"></i> Welcome, <%= user.name %></span></a>
-     <a href="/login/logout"><button class="navbar-login-btn">logout</button></a>
-   </div>
-   <% } else { %>
-     <a href="/login"><button class="navbar-login-btn">Login</button></a>
+
+  <!-- User/Login Section -->
+  <div>
+    <% if(user){ %>
+    <div class="flex items-center gap-3">
+      <a href="/userPanel" class="text-white">
+        <span class=" sm:inline font-semibold text-sm sm:text-base px-4 py-2 rounded-full transition hover:bg-[#ff3f6c]">
+          <i class="fa-solid fa-user mr-1"></i> Welcome, <%= user.name %>
+        </span>
+        
+      </a>
+      <a href="/login/logout">
+        <button class="bg-[#ff3f6c] border-none px-4 py-2 rounded-lg text-white text-sm sm:text-base hover:bg-[#e5385e] transition">
+          Logout
+        </button>
+      </a>
+    </div>
+    <% } else { %>
+      <a href="/login">
+        <button class="bg-[#ff3f6c] border-none px-5 py-2 rounded-lg text-white text-[1rem] sm:text-base hover:bg-[#e5385e] transition">
+          Login
+        </button>
+      </a>
     <% } %>
- 
- </div>
+  </div>
 </header>

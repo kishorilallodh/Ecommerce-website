@@ -4,120 +4,51 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login Form</title>
-<style>
-    *{
-       margin: 0;
-       padding: 0;
-       box-sizing: border-box;
-    }
-    
-     html,body{
-        width: 100%;
-        height: 100%;
-    }
-    /* login form style */
-.login-container1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: rgb(193, 218, 218);
-}
-
-.login-container {
-  max-width: 400px;
-  margin: 80px auto;
-  padding: 30px 25px;
-  background: #ffffff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
-  font-family: Arial, sans-serif;
-}
-
-.login-container h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #333;
-}
-
-.login-group-form {
-  margin-right: 20px;  
-  margin-bottom: 20px;
-}
-
-.username {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: #4b4a4a;
-}
-.password {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: #4b4a4a;
-}
-
-.login-input {
-  display: block;
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 15px;
-  transition: border-color 0.3s ease;
-}
-
-.login-input:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-.login-btn {
-  width: 100%;
-  padding: 12px;
-  background: #007bff;
-  color: #fff;
-  font-weight: bold;
-  font-size: 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.login-btn:hover {
-  background: #0056b3;
-}
-.signup-link{
-  text-align: center;
-  margin-top: 20px;
-}
-.signup-link a{
-  text-decoration: none;
-  color: #007bff;
-}
-</style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <div class="login-container1">
-    <div class="login-container">
-    <h2>Login</h2>
-   <form method="POST" action="/login/homepage">
-  <div class="login-group-form">
-    <label class="username" for="email">Username or Email</label>
-    <input class="login-input" type="email" id="email" name="email" required />
-  </div>
-  <div class="login-group-form">
-    <label class="password" for="password">Password</label>
-    <input class="login-input" type="password" id="password" name="password" required />
-  </div>
-  <button type="submit" class="login-btn">Login</button>
-  <div class="signup-link"><p>Don't have an account? <a href="/signup">Sign Up</a></p></div>
-</form>
-
+<body class="min-h-screen flex items-center justify-center bg-[rgb(193,218,218)] px-4">
+  <div class="w-full max-w-sm bg-white p-6 sm:p-8 rounded-xl shadow-lg font-sans">
+    <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Login</h2>
     
-  </div>
+    <form method="POST" action="/login/homepage">
+      <div class="mb-4">
+        <label for="email" class="block mb-2 font-semibold text-gray-700">Username or Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your username or email"
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-blue-500"
+        />
+      </div>
+
+      <div class="mb-6">
+        <label for="password" class="block mb-2 font-semibold text-gray-700">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-blue-500"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white text-base font-bold rounded-md transition duration-300"
+      >
+        Login
+      </button>
+
+      <div class="text-center mt-5 text-sm">
+        <p>
+          Don't have an account?
+          <a href="/signup" class="text-blue-600 hover:underline">Sign Up</a>
+        </p>
+      </div>
+    </form>
   </div>
 </body>
 </html>

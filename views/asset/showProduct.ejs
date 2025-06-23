@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product List</title>
-    <link rel="stylesheet" href="/css/style.css" />
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -12,109 +12,71 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-   <style>
-  /* Pagination Container */
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 30px 0;
-    gap: 10px;
-  }
-
-  /* Pagination Links */
-  .pagination a, 
-  .pagination span {
-    display: inline-block;
-    padding: 8px 16px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  /* Normal Page Links */
-  .pagination a {
-    color: #333;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-  }
-
-  /* Current Active Page */
-  .pagination span {
-    color: white;
-    background-color: #007bff;
-    border: 1px solid #007bff;
-  }
-
-  /* Hover Effect */
-  .pagination a:hover {
-    background-color: #e9ecef;
-  }
-
-  /* Previous/Next Buttons */
-  .pagination a.prev-next {
-    min-width: 80px;
-    text-align: center;
-  }
-
-  .pagination a.prev-next:hover{
-     background-color: #007bff;
-     color: white;
-  }
-
-  /* Disabled Links */
-  .pagination a.disabled {
-    color: #6c757d;
-    pointer-events: none;
-    background-color: #f5f5f5;
-    border-color: #ddd;
-  }
-</style>
+  
   </head>
   <body>
     <%- include('../includes/navbar.ejs') %>
 
-   <div class="product-container">
+ <div class="flex flex-wrap justify-center gap-5 p-5">
   <% products.forEach(product => { %>
-    <a href="/product/<%= product._id %>" class="product-card-link">
-      <div class="add-product-card">
-        <div class="product-image">
-          <img src="/<%= product.pimage %>" alt="<%= product.pname %>" />
+    <a href="/product/<%= product._id %>" class="no-underline text-inherit">
+      <div class="w-[280px] bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-[1.03]">
+        <div class="w-full">
+          <img src="/<%= product.pimage %>" alt="<%= product.pname %>" class="w-full h-auto block" />
         </div>
-        <div class="add-product-info">
-          <h4 class="product-name"><%= product.pname %></h4>
-          <div class="price-row">
-            <p class="add-product-price">₹ <%= product.pprice %></p>
-            <p class="product-discount"><%= product.pdisct %>% OFF</p>
+        <div class="p-4 text-left">
+          <h4 class="text-sm font-semibold text-gray-800 mb-2"><%= product.pname %></h4>
+          <div class="flex items-center gap-5">
+            <p class="text-pink-600 text-base font-semibold m-0">₹ <%= product.pprice %></p>
+            <p class="text-green-600 text-sm m-0"><%= product.pdisct %>% OFF</p>
           </div>
         </div>
       </div>
     </a>
   <% }) %>
 </div>
-<div class="pagination">
+
+<div class="flex justify-center items-center gap-2 my-8 flex-wrap">
   <% if (totalPages > 1) { %>
+
     <% if (currentPage > 1) { %>
-      <a href="/showproduct/?page=<%= currentPage-1 %>" class="prev-next">Previous</a>
+      <a href="/showproduct/?page=<%= currentPage-1 %>"
+         class="min-w-[80px] text-center px-4 py-2 text-sm font-medium text-gray-800 bg-gray-100 border border-gray-300 rounded hover:bg-blue-600 hover:text-white transition">
+        Previous
+      </a>
     <% } else { %>
-      <a href="#" class="prev-next disabled">Previous</a>
+      <a href="#"
+         class="min-w-[80px] text-center px-4 py-2 text-sm font-medium text-gray-500 bg-gray-100 border border-gray-300 rounded cursor-not-allowed">
+        Previous
+      </a>
     <% } %>
 
     <% for (let i = 1; i <= totalPages; i++) { %>
       <% if (i === currentPage) { %>
-        <span><%= i %></span>
+        <span
+          class="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded">
+          <%= i %>
+        </span>
       <% } else { %>
-        <a href="/showproduct/?page=<%= i %>"><%= i %></a>
+        <a href="/showproduct/?page=<%= i %>"
+           class="px-4 py-2 text-sm font-medium text-gray-800 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 transition">
+          <%= i %>
+        </a>
       <% } %>
     <% } %>
 
     <% if (currentPage < totalPages) { %>
-      <a href="/showproduct/?page=<%= currentPage+1 %>" class="prev-next">Next</a>
+      <a href="/showproduct/?page=<%= currentPage+1 %>"
+         class="min-w-[80px] text-center px-4 py-2 text-sm font-medium text-gray-800 bg-gray-100 border border-gray-300 rounded hover:bg-blue-600 hover:text-white transition">
+        Next
+      </a>
     <% } else { %>
-      <a href="#" class="prev-next disabled">Next</a>
+      <a href="#"
+         class="min-w-[80px] text-center px-4 py-2 text-sm font-medium text-gray-500 bg-gray-100 border border-gray-300 rounded cursor-not-allowed">
+        Next
+      </a>
     <% } %>
+
   <% } %>
 </div>
 
