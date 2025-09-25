@@ -19,14 +19,14 @@ const upload = multer({ storage: storage });
 
 router.get("/addproduct",authMiddleware, productController.getAddProductPage);
 router.post('/submitproduct', upload.array('pimage'), productController.submitProduct)
-router.get("/showproduct",authMiddleware, productController.showAllProducts);
+router.get("/showproduct", productController.showAllProducts);
 
 router.get('/editproduct/:id',authMiddleware,productController.getEditProductPage);
 router.post('/editproduct/:id', upload.array('pimage'), productController.updateProduct);
 
 router.get('/deleteproduct/:id', productController.deleteProduct);
 
-router.get('/product/:id',authMiddleware, productController.getSingleProduct);
+router.get('/product/:id', productController.getSingleProduct);
 
 
 
